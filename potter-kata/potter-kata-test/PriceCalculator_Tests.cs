@@ -22,7 +22,7 @@ namespace Potter_Kata_Test
         {
             priceCalc.addBook(new Book() { bookNum = 1 });
 
-            Assert.AreEqual(8, priceCalc.OrderPrice);
+            Assert.AreEqual(8, priceCalc.OrderPrice());
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace Potter_Kata_Test
             priceCalc.addBook(new Book() { bookNum = 1 });
             priceCalc.addBook(new Book() { bookNum = 1 });
 
-            Assert.AreEqual(16, priceCalc.OrderPrice);
+            Assert.AreEqual(16, priceCalc.OrderPrice());
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace Potter_Kata_Test
             priceCalc.addBook(new Book() { bookNum = 1 });
             priceCalc.addBook(new Book() { bookNum = 2 });
 
-            Assert.AreEqual(15.2, priceCalc.OrderPrice);
+            Assert.AreEqual(15.2, priceCalc.OrderPrice());
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace Potter_Kata_Test
             priceCalc.addBook(new Book() { bookNum = 2 });
             priceCalc.addBook(new Book() { bookNum = 3 });
 
-            Assert.AreEqual(21.6, priceCalc.OrderPrice);
+            Assert.AreEqual(21.6, priceCalc.OrderPrice());
         }
     }
 }

@@ -7,18 +7,17 @@ namespace Potter_Kata
     public class PriceCalculator
     {
         private List<Book> books;
+        private decimal bookPrice;
 
         public PriceCalculator()
         {
             books = new List<Book>();
+            bookPrice = 8;
         }
 
-        public decimal OrderPrice
+        public decimal OrderPrice()
         {
-            get
-            {
-                return books.Count * 8;
-            }
+            return books.Count * bookPrice;
         }
 
         public void addBook(Book book)
