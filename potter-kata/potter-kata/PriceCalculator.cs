@@ -13,7 +13,7 @@ namespace Potter_Kata
             books = new List<Book>();
         }
 
-        public int OrderPrice
+        public decimal OrderPrice
         {
             get
             {
