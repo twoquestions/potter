@@ -6,4 +6,8 @@
     <RootNamespace>potter_kata_tui</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\potter-kata\potter-kata.csproj" />
+  </ItemGroup>
+
 </Project>
