@@ -33,7 +33,13 @@ namespace Potter_Kata
                 books.Where(x => x.bookNum == 5).Count()
             };
 
-            return BiggestSetsPossible(bookStacks);
+            var totals = new List<decimal>() {
+                BiggestSetsPossible(new List<int>(bookStacks)),
+                SetsOfFourAndDown(new List<int>(bookStacks))
+            };
+
+            //Return the smallest one we can find.
+            return totals.OrderBy(x => x).First();
         }
 
         /// <summary>
@@ -45,9 +51,9 @@ namespace Potter_Kata
         {
             var finalPrice = 0M;
             //While there are books not in a set...
-            while(bookStacks.Any(x => x > 0))
+            while (bookStacks.Any(x => x > 0))
             {
-                switch(bookStacks.Where(x => x > 0).Count())
+                switch (bookStacks.Where(x => x > 0).Count())
                 {
                     case 5:
                         finalPrice += (bookPrice * 5) * set5discount;
@@ -72,6 +78,53 @@ namespace Potter_Kata
                     if (x > 0) { return x - 1; }
                     else { return x; }
                 }).ToList();
+            }
+
+            return finalPrice;
+        }
+
+        /// <summary>
+        /// Try to find as many sets of 4 as we can, then 
+        /// work our way down.
+        /// </summary>
+        /// <param name="bookStacks"></param>
+        /// <returns></returns>
+        private decimal SetsOfFourAndDown(List<int> bookStacks)
+        {
+            var finalPrice = 0M;
+            while (bookStacks.Any(x => x > 0))
+            {
+                int set = 0;
+                switch (bookStacks.Where(x => x > 0).Count())
+                {
+                    case 4:
+                    case 5:
+                        finalPrice += (bookPrice * 4) * set4discount;
+                        set = 4;
+                        break;
+                    case 3:
+                        finalPrice += (bookPrice * 3) * set3discount;
+                        set = 3;
+                        break;
+                    case 2:
+                        finalPrice += (bookPrice * 2) * set2discount;
+                        set = 2;
+                        break;
+                    case 1:
+                        finalPrice += bookPrice;
+                        set = 1;
+                        break;
+                }
+
+                //Decrement what we picked off the stacks
+                for (int i = 0; i < bookStacks.Count() && set > 0; i++)
+                {
+                    if (bookStacks[i] > 0)
+                    {
+                        set -= 1;
+                        bookStacks[i] -= 1;
+                    }
+                }
             }
 
             return finalPrice;
