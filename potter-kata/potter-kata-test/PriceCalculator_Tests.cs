@@ -67,5 +67,14 @@ namespace Potter_Kata_Test
 
             Assert.AreEqual(51.2M, priceCalc.OrderPrice());
         }
+
+        [TestMethod] 
+        public void Clear_cart()
+        {
+            priceCalc.addBook(new Book(1));
+            priceCalc.Clear();
+
+            Assert.AreEqual(0M, priceCalc.OrderPrice());
+        }
     }
 }

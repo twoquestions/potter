@@ -83,6 +83,12 @@ namespace Potter_Kata
             return finalPrice;
         }
 
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+
         /// <summary>
         /// Try to find as many sets of 4 as we can, then 
         /// work our way down.
