@@ -85,7 +85,7 @@ namespace Potter_Kata
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            books.Clear();
         }
 
 
