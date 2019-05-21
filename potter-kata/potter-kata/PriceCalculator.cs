@@ -25,7 +25,6 @@ namespace Potter_Kata
         /// <returns></returns>
         public decimal OrderPrice()
         {
-            decimal finalPrice = 0M;
             var bookStacks = new List<int>() {
                 books.Where(x => x.bookNum == 1).Count(),
                 books.Where(x => x.bookNum == 2).Count(),
@@ -34,6 +33,17 @@ namespace Potter_Kata
                 books.Where(x => x.bookNum == 5).Count()
             };
 
+            return BiggestSetsPossible(bookStacks);
+        }
+
+        /// <summary>
+        /// Try to group the books in the biggest sets possible!
+        /// </summary>
+        /// <param name="bookStacks"></param>
+        /// <returns></returns>
+        private decimal BiggestSetsPossible(List<int> bookStacks)
+        {
+            var finalPrice = 0M;
             //While there are books not in a set...
             while(bookStacks.Any(x => x > 0))
             {
