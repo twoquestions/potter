@@ -52,5 +52,20 @@ namespace Potter_Kata_Test
 
             Assert.AreEqual(21.6M, priceCalc.OrderPrice());
         }
+
+        [TestMethod]
+        public void Two_sets_of_4_is_better_than_a_set_of_5_and_3()
+        {
+            priceCalc.addBook(new Book(1));
+            priceCalc.addBook(new Book(1));
+            priceCalc.addBook(new Book(2));
+            priceCalc.addBook(new Book(2));
+            priceCalc.addBook(new Book(3));
+            priceCalc.addBook(new Book(3));
+            priceCalc.addBook(new Book(4));
+            priceCalc.addBook(new Book(5));
+
+            Assert.AreEqual(51.2M, priceCalc.OrderPrice());
+        }
     }
 }
